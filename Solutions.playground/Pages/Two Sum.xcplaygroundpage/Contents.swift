@@ -1,3 +1,6 @@
+//: [Next](@next)
+
+
 import Foundation
 import XCTest
 /*Given an array of integers numbers and an integer target, return indices of the two numbers such that they add up to target.\
@@ -34,30 +37,28 @@ func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
 }
 
 
-
 class TwoSumTests: XCTestCase {
     
-    typealias Example = (numbers: [Int],target: Int, result: [Int])
-    let example1 = (numbers: [2,7,11,15], target: 9, result: [0,1])
-    let example2 = (numbers: [3,2,4], target: 6 ,result: [1,2])
-    let example3 = (numbers: [3,3], target:  6,result: [0,1])
+    let example1 = Example(input: (nums: [3,2,4], target: 6), output: [1,2])
+    let example2 = Example(input: (nums: [2,7,11,15], target: 9), output: [0,1])
+    let example3 = Example(input:(nums: [3,3], target:6),output: [0,1])
     
-    var examples:  [Example] {
-        return [
-            example1,
-            example2,
-            example3
-        ]
-    }
-   
-    func testExample() {
-        examples.forEach {
-            XCTAssertEqual(twoSum($0.numbers, $0.target),$0.result)
-        }
+    func testExample1() {
+        XCTAssertEqual(twoSum(example1.input.nums, example1.input.target),example1.output)
         
-     }
+    }
+    
+    func testExample2() {
+        XCTAssertEqual(twoSum(example2.input.nums, example2.input.target),example2.output)
+        
+    }
+
+    func testExample3() {
+        XCTAssertEqual(twoSum(example3.input.nums, example3.input.target),example3.output)
+        
+    }
     
 }
 
-TwoSumTests.defaultTestSuite.run()
 
+TwoSumTests.defaultTestSuite.run()
